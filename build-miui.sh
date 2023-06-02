@@ -4,13 +4,13 @@ echo -e "\nStarting compilation...\n"
 CONFIG=vendor/sixteen_defconfig
 KERNEL_DIR=$(pwd)
 PARENT_DIR="$(dirname "$KERNEL_DIR")"
-KERN_IMG="$HOME/out-new-R/out/arch/arm64/boot/Image.gz-dtb"
-export KBUILD_BUILD_USER="elang"
-export KBUILD_BUILD_HOST="kyvangkaelang"
-export PATH="$HOME/toolchain/Clang-r416183c2/bin:$PATH"
-export LD_LIBRARY_PATH="$HOME/toolchain/Clang-r416183c2/lib:$LD_LIBRARY_PATH"
-export KBUILD_COMPILER_STRING="$($HOME/toolchain/Clang-r416183c2/bin/clang --version | head -n 1 | perl -pe 's/\((?:http|git).*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//' -e 's/^.*clang/clang/')"
-export out=$HOME/out-new-R-miui
+KERN_IMG="$HOME/1/out/arch/arm64/boot/Image.gz-dtb"
+export KBUILD_BUILD_USER="fiy"
+export KBUILD_BUILD_HOST="yoigang"
+export PATH="$HOME/clang/google/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/clang/google/lib:$LD_LIBRARY_PATH"
+export KBUILD_COMPILER_STRING="$($HOME/clang/google/bin/clang --version | head -n 1 | perl -pe 's/\((?:http|git).*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//' -e 's/^.*clang/clang/')"
+export out=$HOME/out
 
 # Functions
 clang_build () {
@@ -24,8 +24,8 @@ clang_build () {
 			  OBJCOPY="llvm-objcopy" \
 			  OBJDUMP="llvm-objdump" \
                           CLANG_TRIPLE=aarch64-linux-gnu- \
-                          CROSS_COMPILE=$HOME/toolchain/aarch64-linux-android-4.9/bin/aarch64-linux-android- \
-                          CROSS_COMPILE_ARM32=$HOME/toolchain/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
+                          CROSS_COMPILE=$HOME/gcc/aarch64-linux-android-4.9/bin/aarch64-linux-android- \
+                          CROSS_COMPILE_ARM32=$HOME/gcc/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
 }
 
 # Build kernel
